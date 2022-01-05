@@ -37,22 +37,22 @@ export class ApiClient {
   }
 
   login(username,password) {
-    return this.apiCall("post",url + "auth/",{username: username, password:password});
+    return this.apiCall("post",url + "auth/",{userName: username, password:password});
   }
 
-  getAds() {
+  getEvents() {
     return this.authenticatedCall("get", url);
   }
 
-  addAd(name, price) {
-    return this.authenticatedCall("post", url, { name, price });
+  addEvent(name, location) {
+    return this.authenticatedCall("post", url, { name, location });
   }
 
-  removeAd(id) {
+  removeEvent(id) {
     return this.authenticatedCall("delete", `${url}${id}`);
   }
 
-  updateAd(id, name, price) {
-    return this.authenticatedCall("put", `${url}${id}`, { name, price });
+  updateEvent(id, name, location) {
+    return this.authenticatedCall("put", `${url}${id}`, { name, location });
   }
 }

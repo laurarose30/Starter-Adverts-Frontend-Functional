@@ -7,14 +7,14 @@ function Add(props) {
     e.preventDefault();
     cDisabled(true);
     let result;
-    if (props.currentAd) {
-      result = props.client.updateAd(
-        props.currentAd._id,
-        e.target.adName.value,
-        e.target.price.value
+    if (props.currentEvent) {
+      result = props.client.updateEvent(
+        props.currentEvent._id,
+        e.target.eventName.value,
+        e.target.location.value
       );
     } else {
-      result = props.client.addAd(e.target.adName.value, e.target.price.value);
+      result = props.client.addEvent(e.target.eventName.value, e.target.location.value);
     }
     result
       .then(() => {
@@ -30,24 +30,24 @@ function Add(props) {
 
   return (
     <>
-      {props.currentAd ? "Update" : "Add"}
+      {props.currentEvent ? "Update" : "Add"}
       <br />
 
       <form onSubmit={(e) => submitHandler(e)} id="addForm">
         Name: <br />
         <input
           type="text"
-          defaultValue={props.currentAd?.name}
-          name="adName"
+          defaultValue={props.currentEvent?.name}
+          name="eventName"
           disabled={disabled}
         />
         <br />
-        Price:
+        Location:
         <br />
         <input
           type="text"
-          defaultValue={props.currentAd?.price}
-          name="price"
+          defaultValue={props.currentEvent?.location}
+          name="location"
           disabled={disabled}
         />
         <br />
