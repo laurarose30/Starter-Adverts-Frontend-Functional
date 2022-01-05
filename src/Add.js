@@ -13,10 +13,11 @@ function Add(props) {
         e.target.eventName.value,
         e.target.location.value,
         e.target.summary.value,
-        e.target.date.value
+        e.target.date.value,
+        e.target.timeofevent.value
       );
     } else {
-      result = props.client.addEvent(e.target.eventName.value, e.target.location.value, e.target.summary.value, e.target.date.value);
+      result = props.client.addEvent(e.target.eventName.value, e.target.location.value, e.target.summary.value, e.target.date.value, e.target.timeofevent.value);
     }
     result
       .then(() => {
@@ -70,7 +71,17 @@ function Add(props) {
           name="date"
           disabled={disabled}
         />
+        <br/>
+         Time:
         <br />
+        <input
+          type="text"
+          defaultValue={props.currentEvent?.timeofevent}
+          name="timeofevent"
+          disabled={disabled}
+        />
+        <br />
+
         <button type="submit" disabled={disabled}>
           {" "}
           Submit{" "}
