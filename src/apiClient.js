@@ -44,15 +44,15 @@ export class ApiClient {
     return this.authenticatedCall("get", url);
   }
 
-  addEvent(name, location) {
-    return this.authenticatedCall("post", url, { name, location });
+  addEvent(name, location, summary, date) {
+    return this.authenticatedCall("post", url, { name, location, summary, date });
   }
 
   removeEvent(id) {
     return this.authenticatedCall("delete", `${url}${id}`);
   }
 
-  updateEvent(id, name, location) {
-    return this.authenticatedCall("put", `${url}${id}`, { name, location });
+  updateEvent(id, name, location, summary, date) {
+    return this.authenticatedCall("put", `${url}${id}`, { name, location, summary, date });
   }
 }

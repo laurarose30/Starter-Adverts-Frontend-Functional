@@ -8,10 +8,11 @@ function Login(props) {
   console.log("submitted");
    e.preventDefault();
    cDisabled(true);
-
+    console.log(props);
    props.client
     .login(e.target.username.value,e.target.password.value)
     .then( (response) => {
+      
       cDisabled(false);
       console.log(response.data.token);
       props.loggedIn(response.data.token);
@@ -42,7 +43,9 @@ function Login(props) {
           {" "}
           Submit{" "}
         </button>
+  
       </form>
+    
     </>
   );
 }

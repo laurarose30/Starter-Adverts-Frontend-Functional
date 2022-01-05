@@ -27,6 +27,8 @@ function Dashboard(props) {
         <tr key={current._id}>
           <td>{current.name}</td>
           <td>{current.location}</td>
+          <td>{current.summary}</td>
+          <td>{current.date}</td>
           <td>
             <button onClick={() => removeEvent(current._id)}> remove</button>
             <button onClick={() => updateEvent(current)}> update</button>
@@ -46,6 +48,8 @@ function Dashboard(props) {
           <tr>
             <th>Event Name</th>
             <th>Location</th>
+            <th>Summary</th>
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>{buildrows()}</tbody>
