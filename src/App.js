@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import Dashboard from "./Dashboard";
 import { ApiClient } from "./apiClient";
 import Login from "./Login";
-
+import {eventCard} from "./eventCard";
+import  Card  from "react-bootstrap";
+import  Col  from "react-bootstrap";
 function App() {
   const [token,changeToken] = useState(window.localStorage.getItem("token"));
 
@@ -34,5 +36,15 @@ function App() {
     </>
   );
 }
+
+buildCards();{
+  return this.state.event.map((current, i) => (
+    <Col key={i} lg>
+      <Card>
+        <eventCard text={current.name} location={current.location} summary={current.summary} date={current.date} time={current.timeofevent}/>
+      </Card>
+    </Col>
+  ))
+  }
 
 export default App;
