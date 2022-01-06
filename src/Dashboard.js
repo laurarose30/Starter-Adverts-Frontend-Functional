@@ -3,11 +3,11 @@ import moment from "moment";
 import Moment from 'react-moment';
 import Add from "./Add";
 
+
 function Dashboard(props) {
   const [events, cEvents] = useState([]);
   const [current, cCurrent] = useState(undefined);
-  const date = moment;
-  moment().format('yyyy-mm-dd')
+  
  
   const refreshList = () => {
     props.client.getEvents().then((response) => cEvents(response.data));
@@ -32,7 +32,7 @@ function Dashboard(props) {
           <td>{current.name}</td>
           <td>{current.location}</td>
           <td>{current.summary}</td>
-          <td><Moment>{current.date}</Moment></td>
+          <td><Moment format="dd-MM-yyyy">{current.date}</Moment></td>
           <td>{current.timeofevent}</td>
           <td>
             <button onClick={() => removeEvent(current._id)}> remove</button>
