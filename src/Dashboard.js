@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 import Moment from 'react-moment';
 import Add from "./Add";
+import EventCard from "./eventCard";
+import Col from 'react-bootstrap/Col'
+import Card from 'react-bootstrap/Card'
 
 function Dashboard(props) {
   const [events, cEvents] = useState([]);
   const [current, cCurrent] = useState(undefined);
-  const date = moment;
-  moment().format('yyyy-mm-dd')
- 
+
   const refreshList = () => {
     props.client.getEvents().then((response) => cEvents(response.data));
   };
@@ -17,29 +18,30 @@ function Dashboard(props) {
     props.client.removeEvent(id).then(() => refreshList());
   };
 
-  const updateEvent = (event) => {
-    cCurrent(event);
+  const updateEvent = (id) => {
+   
+    let e = events.filter( (event) => { return event._id == id});
+    if(e.length > 0){
+   
+    cCurrent(e[0])
+    }
   };
 
   useEffect(() => {
     refreshList();
   }, []);
 
-  const buildrows = () => {
+  const buildcards = () => {
     return events.map((current) => {
       return (
-        <tr key={current._id}>
-          <td>{current.name}</td>
-          <td>{current.location}</td>
-          <td>{current.summary}</td>
-          <td><Moment format="dd-MM-yyyy">{current.date}</Moment></td>
-          <td>{current.timeofevent}</td>
-          <td>
-            <button onClick={() => removeEvent(current._id)}> remove</button>
-            <button onClick={() => updateEvent(current)}> update</button>
+       <>
+   
+          <EventCard id={current._id} text={current.name} location={current.location} summary={current.summary} date={current.date} time={current.timeofevent} removeEvent={removeEvent} updateEvent={updateEvent}></EventCard>
+         
+      </>
+        
             
-          </td>
-        </tr>
+        
       );
     });
   };
@@ -48,20 +50,8 @@ function Dashboard(props) {
     <>
       Dashboard
       <br />
-      <table>
-        <thead>
-          <tr>
-            <th>Event Name</th>
-            <th>Location</th>
-            <th>Summary</th>
-            <th>Date</th>
-            <th>Time</th>
-          </tr>
-        </thead>
-        <tbody>{buildrows()}</tbody>
-      </table>
-      <br />
-      <br />
+     {buildcards()}
+
       <Add
         client={props.client}
         refreshList={() => {

@@ -32,7 +32,9 @@ function Add(props) {
   };
 
   return (
+    
     <>
+   
       {props.currentEvent ? "Update" : "Add"}
       <br />
 
