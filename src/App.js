@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import Dashboard from "./Dashboard";
 import { ApiClient } from "./apiClient";
 import Login from "./Login";
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-import  Card  from "react-bootstrap";
-import  Col  from "react-bootstrap";
+
 function App() {
   const [token,changeToken] = useState(window.localStorage.getItem("token"));
 

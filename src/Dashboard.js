@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import moment from "moment";
-import Moment from 'react-moment';
+
 import Add from "./Add";
 import EventCard from "./eventCard";
-import Col from 'react-bootstrap/Col'
-import Card from 'react-bootstrap/Card'
+
 
 function Dashboard(props) {
   const [events, cEvents] = useState([]);
@@ -33,14 +31,15 @@ function Dashboard(props) {
 
   const buildcards = () => {
     return events.map((current) => {
+     
       return (
        <>
    
-          <EventCard id={current._id} text={current.name} location={current.location} summary={current.summary} date={current.date} time={current.timeofevent} removeEvent={removeEvent} updateEvent={updateEvent}></EventCard>
+          <EventCard id={current._id} name={current.name} location={current.location} summary={current.summary} date={current.date} timeofevent={current.timeofevent} removeEvent={removeEvent} updateEvent={updateEvent}></EventCard>
          
+    
       </>
         
-            
         
       );
     });
@@ -48,10 +47,11 @@ function Dashboard(props) {
 
   return (
     <>
-      Dashboard
+      Events
       <br />
+      <div class="row row-cols-1 row-cols-md-3 g-4">
      {buildcards()}
-
+      </div>
       <Add
         client={props.client}
         refreshList={() => {

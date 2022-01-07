@@ -16,6 +16,8 @@ function Add(props) {
         e.target.date.value,
         e.target.timeofevent.value
       );
+       
+
     } else {
       result = props.client.addEvent(e.target.eventName.value, e.target.location.value, e.target.summary.value, e.target.date.value, e.target.timeofevent.value);
     }
@@ -84,7 +86,7 @@ function Add(props) {
         />
         <br />
 
-        <button type="submit" disabled={disabled}>
+        <button id="button" type="submit" disabled={disabled}>
           {" "}
           Submit{" "}
         </button>
