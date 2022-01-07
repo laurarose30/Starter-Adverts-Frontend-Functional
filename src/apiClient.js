@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "http://localhost:3001/";
+const url = "https://eventslauraandsarah-app.herokuapp.com/";
 
 export class ApiClient {
   constructor(tokenProvider,logoutHandler){
